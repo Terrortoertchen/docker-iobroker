@@ -90,6 +90,5 @@ ENV ADMINPORT=8081 \
     IOB_STATESDB_HOST="172.20.10.130" \
     IOB_STATESDB_PORT="6380" \
     IOB_STATESDB_TYPE="redis" \
-     
 # Run startup-script
 ENTRYPOINT ["/opt/scripts/iobroker_startup.sh"]
