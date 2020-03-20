@@ -24,22 +24,22 @@ before_install:
 
 jobs:
   include:
-    - stage: Build images
-      env:
-        - ARCH=amd64
-        - JOB_NAME="Build images"
-      script:
-        - sed -i "s/\$VERSION/${VERSION}/g" $ARCH/scripts/iobroker_startup.sh
-        - docker build -t "buanet/iobroker:$VERSION-$ARCH" ./amd64
-
-    - stage: Build images
-      env:
-        - ARCH=aarch64
-        - JOB_NAME="Build images"
-      script:
-        - docker run --rm --privileged multiarch/qemu-user-static:register --reset
-        - sed -i "s/\$VERSION/${VERSION}/g" $ARCH/scripts/iobroker_startup.sh
-        - docker build -t "buanet/iobroker:$VERSION-$ARCH" ./aarch64
+  #  - stage: Build images
+   #   env:
+   #     - ARCH=amd64
+   #     - JOB_NAME="Build images"
+   #   script:
+   #     - sed -i "s/\$VERSION/${VERSION}/g" $ARCH/scripts/iobroker_startup.sh
+   #     - docker build -t "buanet/iobroker:$VERSION-$ARCH" ./amd64
+   #
+   #- stage: Build images
+   #  env:
+   #    - ARCH=aarch64
+   #    - JOB_NAME="Build images"
+   #  script:
+   #    - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+   #    - sed -i "s/\$VERSION/${VERSION}/g" $ARCH/scripts/iobroker_startup.sh
+   #    - docker build -t "buanet/iobroker:$VERSION-$ARCH" ./aarch64
 
     - stage: Build images
       env:
@@ -48,7 +48,7 @@ jobs:
       script:
         - docker run --rm --privileged multiarch/qemu-user-static:register --reset
         - sed -i "s/\$VERSION/${VERSION}/g" $ARCH/scripts/iobroker_startup.sh
-        - docker build -t "buanet/iobroker:$VERSION-$ARCH" ./armv7hf
+        - docker build -t "terrortoertchen/hshome-auto:hshbroker-$VERSION-$ARCH" ./armv7hf
 
     - stage: Manifest
       env:
@@ -60,11 +60,11 @@ after_success:
 # tag and push built images
   - >
     if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$JOB_NAME" == "Build images" ] ; then
-      docker push buanet/iobroker:$VERSION-$ARCH
+      docker push terrortoertchen/hshome-auto:hshbroker-$VERSION-$ARCH
     fi
 
     if [ "$TRAVIS_BRANCH" == "beta" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$JOB_NAME" == "Build images" ] ; then
-      docker push buanet/iobroker:$VERSION-$ARCH
+      docker push terrortoertchen/hshome-auto:hshbroker-$VERSION-$ARCH
     fi
 
 # update repository manifest for multiarch and push to hub

@@ -6,6 +6,8 @@
 cd /opt/iobroker
 pkill io
 sleep 5
+pkill io
+sleep 10
 node node_modules/iobroker.js-controller/controller.js >/opt/scripts/docker_iobroker_log.txt 2>&1 &
 
 exit 0

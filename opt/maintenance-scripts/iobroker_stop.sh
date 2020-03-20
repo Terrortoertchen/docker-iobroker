@@ -5,5 +5,8 @@
 
 cd /opt/iobroker
 pkill io
+sleep 5
+pkill io
+sleep 10
 
 exit 0
