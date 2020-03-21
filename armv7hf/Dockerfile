@@ -87,8 +87,8 @@ ENV ADMINPORT=8081 \
     TZ="Europe/Berlin" \
     USBDEVICES="none" \
     ZWAVE="false" \
-    IOB_STATESDB_HOST="172.20.10.130" \
-    IOB_STATESDB_PORT="6380" \
-    IOB_STATESDB_TYPE="redis" \
+    STATESDB_HOST="172.21.11.4" \
+    STATESDB_PORT="6380" \
+    STATESDB_TYPE="redis" \
 # Run startup-script
 ENTRYPOINT=["/opt/scripts/iobroker_startup.sh"]
