@@ -12,6 +12,10 @@ COPY scripts/resolve.conf resolve.conf
 RUN mkdir -p /opt/userscripts/ \
     && chmod 777 /opt/userscripts/
 
+WORKDIR /opt/userscripts/
+COPY scripts\userscript_everystart.sh userscript_everystart.sh \
+COPY scripts\userscript_firststart.sh userscript_firststart.sh \
+
 WORKDIR /
 RUN apt-get update && apt-get install -y \
     acl \

@@ -12,8 +12,8 @@ manifests:
   #    variant: v8
   #    os: linux
   -
-    image: terrortoertchen/hshome-auto:hshbroker-$VERSION-armv7hf
-    platform:
-      architecture: arm
-      variant: v7
-      os: linux
+   image: terrortoertchen/hshome-auto:hshbroker-$VERSION-armv7hf
+   platform:
+     architecture: arm
+     variant: v7
+     os: linux
