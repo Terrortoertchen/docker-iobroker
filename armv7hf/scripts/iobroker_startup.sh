@@ -289,7 +289,6 @@ then
   echo ' '
 fi
 
-
 # Checking ENVs for custom setup of states db#
 if [ "$statesdbtype" != "" ] || [ "$statesdbhost" != "" ] || [ "$statesdbport" != "" ]
 then
