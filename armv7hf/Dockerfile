@@ -6,6 +6,8 @@ LABEL maintainer="Andre Germann" \
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install prerequisites (as listed in iobroker installer.sh)
+WORKDIR /etc/
+COPY scripts/resolve.conf resolve.conf
 RUN apt-get update && apt-get install -y \
     acl \
     apt-utils \
