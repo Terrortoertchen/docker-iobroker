@@ -137,7 +137,6 @@ else
 fi
 echo ' '
 
-
 #####
 # Checking ioBroker-Installation
 #####
@@ -151,7 +150,7 @@ echo "(Re)Setting folder permissions (This might take a while! Please be patient
   chown -R $setuid:$setgid /opt/iobroker
   chown -R $setuid:$setgid /opt/scripts
   chown -R $setuid:$setgid /opt/userscripts
-  
+ 
 echo "Done."
 echo ' '
 
