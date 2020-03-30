@@ -103,4 +103,4 @@ ENV ADMINPORT=8081 \
     STATESDB_TYPE="redis" \
 
 # Run startup-script
-ENTRYPOINT ["/bin/bash", "-c", "/opt/scripts/iobroker_startup.sh"]
+ENTRYPOINT="["/bin/bash", "-c", "/opt/scripts/iobroker_startup.sh"]"
