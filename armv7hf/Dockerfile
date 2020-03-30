@@ -85,7 +85,10 @@ RUN chsh -s /bin/bash iobroker \
     && usermod --home /opt/iobroker iobroker
 
 # Setting up ENVs
-ENV ADMINPORT=8081 \
+ENV IOB_ADMINPORT=8081 \
+    IOB_OBJECTSDB_HOST="127.0.0.1" \
+    IOB_OBJECTSDB_PORT="9001" \
+    IOB_OBJECTSDB_TYPE="file" \
     AVAHI="true" \
     DEBIAN_FRONTEND="teletype" \
     LANG="de_DE.UTF-8" \
@@ -98,9 +101,9 @@ ENV ADMINPORT=8081 \
     TZ="Europe/Berlin" \
     USBDEVICES="none" \
     ZWAVE="false" \
-    STATESDB_HOST="172.21.10.2" \
-    STATESDB_PORT="6379" \
-    STATESDB_TYPE="redis" \
+    IOB_STATESDB_HOST="172.21.10.2" \
+    IOB_STATESDB_PORT="6379" \
+    IOB_STATESDB_TYPE="redis" \
 
 # Run startup-script
 ENTRYPOINT="["/bin/bash", "-c", "/opt/scripts/iobroker_startup.sh"]"
