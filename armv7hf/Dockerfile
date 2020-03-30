@@ -103,7 +103,7 @@ ENV IOB_ADMINPORT=8081 \
     ZWAVE="false" \
     IOB_STATESDB_HOST="172.21.10.2" \
     IOB_STATESDB_PORT="6379" \
-    IOB_STATESDB_TYPE="redis" \
+    IOB_STATESDB_TYPE="redis"
 
 # Run startup-script
-ENTRYPOINT="["/bin/bash", "-c", "/opt/scripts/iobroker_startup.sh"]"
+ENTRYPOINT ["/bin/bash", "-c", "/opt/scripts/iobroker_startup.sh"]
