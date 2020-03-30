@@ -78,7 +78,7 @@ RUN npm install -g node-gyp
 
 # Backup initial ioBroker-folder
 RUN tar -cf /opt/initial_iobroker.tar /opt/iobroker \
-    && && tar -cf /opt/initial_userscripts.tar /opt/userscripts
+    && tar -cf /opt/initial_userscripts.tar /opt/userscripts
 
 # Setting up iobroker-user (shell and home directory)
 RUN chsh -s /bin/bash iobroker \
