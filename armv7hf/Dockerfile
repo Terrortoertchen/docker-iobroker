@@ -61,8 +61,8 @@ RUN chmod +x iobroker_startup.sh \
     && chmod +x setup_packages.sh \
     && chmod +x setup_zwave.sh
 WORKDIR /opt/userscripts/
-COPY scripts/userscript_firststart_example.sh userscript_firststart_example.sh
-COPY scripts/userscript_everystart_example.sh userscript_everystart_example.sh
+COPY scripts/userscript_firststart_example.sh userscript_firststart.sh
+COPY scripts/userscript_everystart_example.sh userscript_everystart.sh
 
 # Install ioBroker
 WORKDIR /
@@ -97,7 +97,7 @@ ENV ADMINPORT=8081 \
     TZ="Europe/Berlin" \
     USBDEVICES="none" \
     ZWAVE="false" \
-    STATESDB_HOST="172.21.11.4" \
+    STATESDB_HOST="172.21.10.2" \
     STATESDB_PORT="6380" \
     STATESDB_TYPE="redis" \
 # Run startup-script
