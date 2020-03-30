@@ -98,7 +98,8 @@ ENV ADMINPORT=8081 \
     USBDEVICES="none" \
     ZWAVE="false" \
     STATESDB_HOST="172.21.10.2" \
-    STATESDB_PORT="6380" \
+    STATESDB_PORT="6379" \
     STATESDB_TYPE="redis" \
+
 # Run startup-script
 ENTRYPOINT=["/opt/scripts/iobroker_startup.sh"]
