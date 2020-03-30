@@ -1,7 +1,7 @@
-FROM balenalib/armv7hf-debian:stretch
+FROM balenalib/armv7hf-debian:buster
 
-LABEL maintainer="Andre Germann" \ 
-      url="<https://buanet.de>"
+LABEL maintainer="Alexander Böhm" \ 
+      url="<https://hshnet.hshproxy.duckdns.org"
 	  
 ENV DEBIAN_FRONTEND noninteractive
 
