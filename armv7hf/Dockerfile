@@ -77,7 +77,8 @@ WORKDIR /opt/iobroker/
 RUN npm install -g node-gyp
 
 # Backup initial ioBroker-folder
-RUN tar -cf /opt/initial_iobroker.tar /opt/iobroker
+RUN tar -cf /opt/initial_iobroker.tar /opt/iobroker \
+    && && tar -cf /opt/initial_userscripts.tar /opt/userscripts
 
 # Setting up iobroker-user (shell and home directory)
 RUN chsh -s /bin/bash iobroker \
@@ -102,4 +103,4 @@ ENV ADMINPORT=8081 \
     STATESDB_TYPE="redis" \
 
 # Run startup-script
-ENTRYPOINT=["/opt/scripts/iobroker_startup.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "/opt/scripts/iobroker_startup.sh"]

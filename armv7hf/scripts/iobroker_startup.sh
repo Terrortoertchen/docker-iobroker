@@ -74,8 +74,8 @@ then
   then
     echo "Installing additional packages is set by ENV."
     echo "The following packages will be installed:" $packages"..."
-    echo $packages > /opt/scripts/.packages
-    bash /opt/scripts/setup_packages.sh > /opt/scripts/setup_packages.log 2>&1
+    echo $packages | tee /opt/scripts/.packages
+    bash /opt/scripts/setup_packages.sh | tee /opt/scripts/setup_packages.log 2>&1
     echo "Done."
     echo ' '
   fi
@@ -119,7 +119,7 @@ then
   tar -xf /opt/initial_iobroker.tar -C /
   mkdir /opt/iobroker/backups
   mv /opt/*.tar.gz /opt/iobroker/backups/
-  iobroker restore 0 > /opt/iobroker/log/restore.log 2>&1
+  iobroker restore 0 | tee /opt/iobroker/log/restore.log 2>&1
   echo "Done."
   echo ' '
   echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -150,7 +150,6 @@ echo "(Re)Setting folder permissions (This might take a while! Please be patient
   chown -R $setuid:$setgid /opt/iobroker
   chown -R $setuid:$setgid /opt/scripts
   chown -R $setuid:$setgid /opt/userscripts
- 
 echo "Done."
 echo ' '
 
@@ -262,7 +261,7 @@ then
   then
     echo "ENV IOB_OBJECTSDB_TYPE is set and value is different from detected ioBroker installation."
     echo "Setting type of objects db to \""$objectsdbtype"\"..."
-    jq --arg objectsdbtype "$objectsdbtype" '.objects.type = $objectsdbtype' /opt/iobroker/iobroker-data/iobroker.json > /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
+    jq --arg objectsdbtype "$objectsdbtype" '.objects.type = $objectsdbtype' /opt/iobroker/iobroker-data/iobroker.json | tee /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
     echo "Done."
   else
     echo "ENV IOB_OBJECTSDB_TYPE is set and value meets detected ioBroker installation. Nothing to do here."
@@ -271,7 +270,7 @@ then
   then
     echo "ENV IOB_OBJECTSDB_HOST is set and value is different from detected ioBroker installation."
     echo "Setting host of objects db to \""$objectsdbhost"\"..."
-    jq --arg objectsdbhost "$objectsdbhost" '.objects.host = $objectsdbhost' /opt/iobroker/iobroker-data/iobroker.json > /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
+    jq --arg objectsdbhost "$objectsdbhost" '.objects.host = $objectsdbhost' /opt/iobroker/iobroker-data/iobroker.json | tee /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
     echo "Done."
   else
     echo "ENV IOB_OBJECTSDB_HOST is set and value meets detected ioBroker installation. Nothing to do here."
@@ -280,7 +279,7 @@ then
   then
     echo "ENV IOB_OBJECTSDB_PORT is set and value is different from detected ioBroker installation."
     echo "Setting port of objects db to \""$objectsdbport"\"..."
-    jq --arg objectsdbport "$objectsdbport" '.objects.port = $objectsdbport' /opt/iobroker/iobroker-data/iobroker.json > /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
+    jq --arg objectsdbport "$objectsdbport" '.objects.port = $objectsdbport' /opt/iobroker/iobroker-data/iobroker.json | tee /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
     echo "Done."
   else
     echo "ENV IOB_OBJECTSDB_PORT is set and value meets detected ioBroker installation. Nothing to do here."
@@ -295,7 +294,7 @@ then
   then
     echo "ENV IOB_STATESDB_TYPE is set and value is different from detected ioBroker installation."
     echo "Setting type of states db to \""$statesdbtype"\"..."
-    jq --arg statesdbtype "$statesdbtype" '.states.type = $statesdbtype' /opt/iobroker/iobroker-data/iobroker.json > /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
+    jq --arg statesdbtype "$statesdbtype" '.states.type = $statesdbtype' /opt/iobroker/iobroker-data/iobroker.json | tee /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
     echo "Done."
   else
     echo "ENV IOB_STATESDB_TYPE is set and value meets detected ioBroker installation. Nothing to do here."
@@ -304,7 +303,7 @@ then
   then
     echo "ENV IOB_STATESDB_HOST is set and value is different from detected ioBroker installation."
     echo "Setting host of states db to \""$statesdbhost"\"..."
-    jq --arg statesdbhost "$statesdbhost" '.states.host = $statesdbhost' /opt/iobroker/iobroker-data/iobroker.json > /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
+    jq --arg statesdbhost "$statesdbhost" '.states.host = $statesdbhost' /opt/iobroker/iobroker-data/iobroker.json | tee /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
     echo "Done."
   else
     echo "ENV IOB_STATESDB_HOST is set and value meets detected ioBroker installation. Nothing to do here."
@@ -313,7 +312,7 @@ then
   then
     echo "ENV IOB_STATESDB_PORT is set and value is different from detected ioBroker installation."
     echo "Setting port of states db to \""$statesdbport"\"..."
-    jq --arg statesdbport "$statesdbport" '.states.port = $statesdbport' /opt/iobroker/iobroker-data/iobroker.json > /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
+    jq --arg statesdbport "$statesdbport" '.states.port = $statesdbport' /opt/iobroker/iobroker-data/iobroker.json | tee /opt/iobroker/iobroker-data/iobroker.json.tmp && mv /opt/iobroker/iobroker-data/iobroker.json.tmp /opt/iobroker/iobroker-data/iobroker.json
     echo "Done."
   else
     echo "ENV IOB_STATESDB_PORT is set and value meets detected ioBroker installation. Nothing to do here."
