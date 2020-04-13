@@ -1,5 +1,5 @@
-#FROM balenalib/armv7hf-debian:stretch
-FROM arm32v7/debian:buster
+FROM balenalib/armv7hf-debian:stretch
+#FROM arm32v7/debian:buster
 
 LABEL maintainer="Alexander Böhm" \ 
       url="<https://hshnet.hshproxy.duckdns.org"
