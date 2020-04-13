@@ -21,6 +21,11 @@ RUN apt-get update && apt-get install -y \
     gnupg2 \
     gosu \
     libavahi-compat-libdnssd-dev \
+    libcairo2-dev \
+    libpango1.0-dev \
+    libjpeg-dev \
+    libgif-dev \
+    librsvg2-dev \
     libcap2-bin \
     libpam0g-dev \
     libudev-dev \
@@ -67,7 +72,6 @@ COPY scripts/userscript_everystart_example.sh userscript_everystart.sh
 # Install ioBroker
 WORKDIR /
 RUN apt-get update \
-    && apt-get full-upgrade -y \
     && curl -sL https://raw.githubusercontent.com/ioBroker/ioBroker/stable-installer/installer.sh | bash - \
     && echo $(hostname) > /opt/iobroker/.install_host \
     && echo $(hostname) > /opt/.firstrun \
@@ -92,7 +96,7 @@ ENV IOB_ADMINPORT=8081 \
     IOB_OBJECTSDB_TYPE="file" \
     AVAHI="true" \
     DEBIAN_FRONTEND="teletype" \
-    UDEV="true" \
+    UDEV="on" \
     LANG="de_DE.UTF-8" \
     LANGUAGE="de_DE:de" \
     LC_ALL="de_DE.UTF-8" \
