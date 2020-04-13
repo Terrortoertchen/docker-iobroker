@@ -1,4 +1,4 @@
-FROM balenalib/armv7hf-debian:stretch
+FROM balenalib/armv7hf-debian:buster
 #FROM arm32v7/debian:buster
 
 LABEL maintainer="Alexander Böhm" \ 
