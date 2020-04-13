@@ -1,4 +1,5 @@
-FROM balenalib/armv7hf-debian:stretch
+#FROM balenalib/armv7hf-debian:stretch
+FROM arm32v7/debian:buster
 
 LABEL maintainer="Alexander Böhm" \ 
       url="<https://hshnet.hshproxy.duckdns.org"
@@ -32,9 +33,7 @@ RUN apt-get update && apt-get install -y \
     udev \
     unzip \
     wget \
-    nano \
     vim \
-    htop \
     && rm -rf /var/lib/apt/lists/*
 
 # Install node10
@@ -68,6 +67,7 @@ COPY scripts/userscript_everystart_example.sh userscript_everystart.sh
 # Install ioBroker
 WORKDIR /
 RUN apt-get update \
+    && apt-get full-upgrade -y \
     && curl -sL https://raw.githubusercontent.com/ioBroker/ioBroker/stable-installer/installer.sh | bash - \
     && echo $(hostname) > /opt/iobroker/.install_host \
     && echo $(hostname) > /opt/.firstrun \
@@ -96,7 +96,7 @@ ENV IOB_ADMINPORT=8081 \
     LANG="de_DE.UTF-8" \
     LANGUAGE="de_DE:de" \
     LC_ALL="de_DE.UTF-8" \
-    PACKAGES="vim nano htop" \
+    PACKAGES="nano htop" \
     REDIS="true" \
     SETGID=1000 \
     SETUID=1000 \
