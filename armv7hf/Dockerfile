@@ -39,6 +39,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     wget \
     vim \
+    nano \
+    htop \
+    mc \
     && rm -rf /var/lib/apt/lists/*
 
 # Install node10
@@ -100,7 +103,7 @@ ENV IOB_ADMINPORT=8081 \
     LANG="de_DE.UTF-8" \
     LANGUAGE="de_DE:de" \
     LC_ALL="de_DE.UTF-8" \
-    PACKAGES="nano htop" \
+    PACKAGES="ncdu" \
     REDIS="true" \
     SETGID=1000 \
     SETUID=1000 \
