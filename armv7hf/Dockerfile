@@ -104,7 +104,6 @@ ENV IOB_ADMINPORT=8081 \
     LANGUAGE="de_DE:de" \
     LC_ALL="de_DE.UTF-8" \
     PACKAGES="ncdu" \
-    REDIS="true" \
     SETGID=1000 \
     SETUID=1000 \
     TZ="Europe/Berlin" \
