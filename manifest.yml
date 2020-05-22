@@ -5,12 +5,12 @@ manifests:
   #  platform:
   #    architecture: amd64
   #    os: linux
- # -
-  #  image: buanet/iobroker:$VERSION-aarch64
-  #  platform:
-  #    architecture: arm64
-  #    variant: v8
-  #    os: linux
+  -
+   image: terrortoertchen/hshome-auto:hshbroker-$VERSION-aarch64
+   platform:
+     architecture: arm64
+     variant: v8
+     os: linux
   -
    image: terrortoertchen/hshome-auto:hshbroker-$VERSION-armv7hf
    platform:
