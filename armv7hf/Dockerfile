@@ -93,7 +93,7 @@ RUN chsh -s /bin/bash iobroker \
     && usermod --home /opt/iobroker iobroker
 
 # Setting up ENVs
-ENV IOB_ADMINPORT=8081 \
+ENV IOB_ADMINPORT="8081" \
     IOB_OBJECTSDB_HOST="127.0.0.1" \
     IOB_OBJECTSDB_PORT="9001" \
     IOB_OBJECTSDB_TYPE="file" \
@@ -103,7 +103,7 @@ ENV IOB_ADMINPORT=8081 \
     LANG="de_DE.UTF-8" \
     LANGUAGE="de_DE:de" \
     LC_ALL="de_DE.UTF-8" \
-    PACKAGES="ncdu" \
+    PACKAGES="ncdu nano" \
     SETGID=1000 \
     SETUID=1000 \
     TZ="Europe/Berlin" \
