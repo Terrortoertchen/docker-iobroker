@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install prerequisites (as listed in iobroker installer.sh)
 WORKDIR /etc/
-COPY scripts/resolve.conf resolve.conf
+COPY scripts/resolv.conf resolv.conf
 
 WORKDIR /
 RUN apt-get update && apt-get install -y \
