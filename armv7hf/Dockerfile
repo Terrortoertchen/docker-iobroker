@@ -44,7 +44,7 @@ RUN apt-get update && apt-get install -y \
     mc \
     && rm -rf /var/lib/apt/lists/*
 
-# Install node10
+# Install node12
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash \
     && apt-get update && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
@@ -75,7 +75,8 @@ COPY scripts/userscript_everystart_example.sh userscript_everystart.sh
 # Install ioBroker
 WORKDIR /
 RUN apt-get update \
-    && curl -sL https://raw.githubusercontent.com/ioBroker/ioBroker/stable-installer/installer.sh | bash - \
+    && curl -sL https://raw.githubusercontent.com/ioBroker/ioBroker/stable-installer/installer.sh \
+    && bash ./installer.sh \
     && echo $(hostname) > /opt/iobroker/.install_host \
     && echo $(hostname) > /opt/.firstrun \
     && rm -rf /var/lib/apt/lists/*
